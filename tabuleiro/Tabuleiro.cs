@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace xadrez_console.tabuleiro
+namespace tabuleiro
 {
     class Tabuleiro
     {
@@ -22,6 +22,12 @@ namespace xadrez_console.tabuleiro
         public Peca peca(int linha, int coluna)
         {
             return pecas[linha, coluna];
+        }
+
+        public void colocarPeca(Peca p, posicao pos)
+        {
+            pecas[pos.linha, pos.coluna] = p;
+            p.posicao = pos;
         }
     }
 }

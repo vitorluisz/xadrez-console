@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using xadrez_console.tabuleiro;
+using tabuleiro;
 
 namespace xadrez_console
 {
@@ -23,7 +23,7 @@ namespace xadrez_console
                     {
                         Console.Write(tab.peca(i, j) + " ");
                     }
-                    Console.Write(tab.peca(i,j)+" ");
+                    
 
                 }
                 Console.WriteLine();
