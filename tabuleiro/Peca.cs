@@ -20,5 +20,10 @@ namespace tabuleiro
             this.qntdMovimentos = 0;
         }
 
+        public void invrementarQntdMovimentos()
+        {
+            qntdMovimentos++;
+        }
+
     }
 }
