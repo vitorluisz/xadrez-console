@@ -44,6 +44,11 @@ namespace tabuleiro
             return movimentosPossiveis()[pos.linha, pos.coluna];
         }
 
+        public void decrementarQntdMovimentos()
+        {
+            qntdMovimentos--;
+        }
+
         public void invrementarQntdMovimentos()
         {
             qntdMovimentos++;
