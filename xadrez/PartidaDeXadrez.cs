@@ -82,6 +82,19 @@ namespace xadrez
         {
             Peca pecaCapturada = executaMovimento(origem, destino);
 
+            //promocao
+            Peca p = tab.peca(destino);
+            if (p is Peao)
+            {
+                if (p.cor == Cor.Branca && destino.coluna == 0 || (p.cor == Cor.Branca && destino.coluna == 7))
+                {
+                    p = tab.retirarPeca(destino);
+                    pecas.Remove(p);
+                    Peca dama = new Dama(tab, p.cor);
+                    tab.colocarPeca(dama, destino);
+                    pecas.Add(dama);
+                }
+            }
 
             if (estaEmCheque(jogadorAtual))
             {
