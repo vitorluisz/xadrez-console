@@ -40,7 +40,7 @@ namespace xadrez
             if(cor == Cor.Branca)
             {
                 pos.definirValores(posicao.linha - 1, posicao.coluna);
-                if (tab.posicaoValid(pos) && livre(pos) && qntdMovimentos == 0)
+                if (tab.posicaoValid(pos) && livre(pos))
                 {
                     mat[pos.linha, pos.coluna] = true;
                 }
@@ -50,12 +50,12 @@ namespace xadrez
                     mat[pos.linha, pos.coluna] = true;
                 }
                 pos.definirValores(posicao.linha - 1, posicao.coluna - 1);
-                if (tab.posicaoValid(pos) && existeInimigo(pos) && qntdMovimentos == 0)
+                if (tab.posicaoValid(pos) && existeInimigo(pos))
                 {
                     mat[pos.linha, pos.coluna] = true;
                 }
                 pos.definirValores(posicao.linha - 1, posicao.coluna + 1);
-                if (tab.posicaoValid(pos) && existeInimigo(pos) && qntdMovimentos == 0)
+                if (tab.posicaoValid(pos) && existeInimigo(pos))
                 {
                     mat[pos.linha, pos.coluna] = true;
                 }
@@ -79,7 +79,7 @@ namespace xadrez
             else
             {
                 pos.definirValores(posicao.linha + 1, posicao.coluna);
-                if (tab.posicaoValid(pos) && livre(pos) && qntdMovimentos == 0)
+                if (tab.posicaoValid(pos) && livre(pos))
                 {
                     mat[pos.linha, pos.coluna] = true;
                 }
@@ -89,12 +89,12 @@ namespace xadrez
                     mat[pos.linha, pos.coluna] = true;
                 }
                 pos.definirValores(posicao.linha + 1, posicao.coluna - 1);
-                if (tab.posicaoValid(pos) && existeInimigo(pos) && qntdMovimentos == 0)
+                if (tab.posicaoValid(pos) && existeInimigo(pos))
                 {
                     mat[pos.linha, pos.coluna] = true;
                 }
                 pos.definirValores(posicao.linha + 1, posicao.coluna + 1);
-                if (tab.posicaoValid(pos) && existeInimigo(pos) && qntdMovimentos == 0)
+                if (tab.posicaoValid(pos) && existeInimigo(pos))
                 {
                     mat[pos.linha, pos.coluna] = true;
                 }
