@@ -86,13 +86,14 @@ namespace xadrez
             Peca p = tab.peca(destino);
             if (p is Peao)
             {
-                if (p.cor == Cor.Branca && destino.coluna == 0 || (p.cor == Cor.Branca && destino.coluna == 7))
+                if (p.cor == Cor.Branca && destino.linha == 0 || (p.cor == Cor.Branca && destino.linha == 7))
                 {
                     p = tab.retirarPeca(destino);
                     pecas.Remove(p);
-                    Peca dama = new Dama(tab, p.cor);
-                    tab.colocarPeca(dama, destino);
-                    pecas.Add(dama);
+                    Console.Write("Qual peça para a promoção? (D, T, C, B)");
+                    Peca pecaPomovida = Tela.escolherPeca(tab, p.cor);
+                    tab.colocarPeca(pecaPomovida, destino);
+                    pecas.Add(pecaPomovida);
                 }
             }
 
