@@ -75,6 +75,30 @@ namespace xadrez_console
 
         }
 
+        public static Peca escolherPeca(Tabuleiro tab, Cor cor)
+        {
+            Peca pecaPromovida = new Dama(tab, cor);
+            string s =Console.ReadLine();
+            if (s == "D" || s == "d")
+            {
+                pecaPromovida = new Dama(tab, cor);
+            }
+            else if(s == "C" || s == "c")
+            {
+                pecaPromovida = new Cavalo(tab, cor);
+            }
+            else if (s == "B" || s == "b")
+            {
+                pecaPromovida = new Bispo(tab, cor);
+            }
+            else if (s == "T" || s == "t")
+            {
+                pecaPromovida = new Torre(tab, cor);
+            }
+
+            return pecaPromovida;
+        }
+
         public static void imprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPosssiveis)
         {
 
