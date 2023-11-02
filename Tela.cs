@@ -33,7 +33,8 @@ namespace xadrez_console
                 Console.WriteLine("XEQUE MATE!!!!");
                 Console.WriteLine("Vencedor: " + partida.jogadorAtual);
             }
-            
+
+            Tela.imprimirAnotacao(partida.anotacao);
         }
 
         public static void imprimirPecasCapturadas(PartidaDeXadrez partida)
@@ -47,6 +48,25 @@ namespace xadrez_console
             Console.ForegroundColor = ConsoleColor.Yellow;
             imprimirConjunto(partida.pecasCapturadas(Cor.Preta));
             Console.ForegroundColor = aux;
+            Console.WriteLine();
+        }
+
+        public static void imprimirAnotacao(List<string> anotacao)
+        {
+            Console.WriteLine("Anotação:");
+            Console.WriteLine();
+            if(anotacao != null)
+            {
+                for (int j = 0; j < anotacao.Count; j++)
+                {
+                    Console.Write(anotacao[j] + " ");
+                    if ((j + 1) % 2 == 0)
+                    {
+                        Console.WriteLine();
+                    }
+                }
+            }
+            
             Console.WriteLine();
         }
 

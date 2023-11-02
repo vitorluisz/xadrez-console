@@ -13,6 +13,7 @@ namespace xadrez
         public bool terminada { get; private set; }
         private HashSet<Peca> pecas;
         private HashSet<Peca> capturadas;
+        public List<string> anotacao = new List<string>();
         public bool xeque { get; private set; }
         public Peca vulneravelEnPassant;
 
@@ -48,7 +49,7 @@ namespace xadrez
                 T.invrementarQntdMovimentos();
                 tab.colocarPeca(T, destinoT);
             }
-            if (p is Rei && destino.coluna == origem.coluna + 2)
+            if (p is Rei && destino.coluna == origem.coluna - 2)
             {
                 Posicao origemT = new Posicao(origem.linha, origem.coluna - 4);
                 Posicao destinoT = new Posicao(origem.linha, origem.coluna - 1);
@@ -180,6 +181,67 @@ namespace xadrez
                     capturadas.Add(pecaCapturada);
                 }
             }
+        }
+
+        public void anotarLance(PartidaDeXadrez partida, Posicao origem, Posicao destino)
+        {
+            Peca p = tab.peca(origem);
+            string x = "";
+            string peca = "";
+
+            bool eCaptura = tab.existePeca(destino);
+            if (eCaptura)
+            {
+                x = "x";
+            }
+
+            if (p is Peao && eCaptura)
+            {
+                peca = "";
+                if (eCaptura)
+                {
+                    peca = Convert.ToString((char)(destino.coluna + 'a'));
+                    x = "x";
+                }
+            }
+            else if(p is Rei)
+            {
+                peca = "R";
+            }
+            else if (p is Dama)
+            {
+                peca = "D";
+            }
+            else if (p is Cavalo)
+            {
+                peca = "C";
+            }
+            else if (p is Torre)
+            {
+                peca = "T";
+            }
+            else if (p is Bispo)
+            {
+                peca = "B";
+            }
+
+            string lanceFinal = peca + x + (char)(destino.coluna + 'a') + (8 - destino.linha);
+
+            if (partida.xeque == true)
+            {
+                lanceFinal += "+";
+            }
+
+            if (p is Rei && (origem.coluna == 4 && destino.coluna == 6))
+            {
+                lanceFinal = "0-0";
+            }
+            else if (p is Rei && (origem.coluna == 4 && destino.coluna == 2))
+            {
+                lanceFinal = "0-0-0";
+            }
+
+            anotacao.Add(lanceFinal);
         }
 
         public void validarPosicaoDeOrigem(Posicao pos)
